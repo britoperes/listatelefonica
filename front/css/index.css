@@ -1,0 +1,13 @@
+.barra{
+    background-color: yellow;
+}
+.barra h2{
+    margin: 1vw auto;
+}
+.formulario{
+    margin:3vw;
+    background-color: gray;
+}
+.formulario input label {
+    padding: auto 1vw;
+}
