@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
     <title>Lista Telefonica - CRUD</title>
 </head>
 <body>
-    
+    <div class="barra">
+        <h2>Lista Telefonica - CRUD</h2>
+    </div>
+
+    <div class = "formulario">
+        <div class="form-group">
+          <label for="nome">Nome do contato</label>
+          <input class="form-control" id="nome" >
+        </div>
+        <div class="form-group">
+          <label for="telefone1">Telefone (1)</label>
+          <input class="form-control" id="telefone1">
+        </div>
+        <div class="form-group">
+          <label for="telefone2">Telefone (2)</label>
+          <input class="form-control" id="telefone2">
+        </div>
+        <div class="form-group">
+          <label for="endereco">Endereco</label>
+          <input class="form-control" id="Endereco">
+        </div>
+        <button class="btn btn-primary">Inserir</button>
+    </div>
+
+    <table class="table">
+        <thead> <!--Inicio da tabela-->
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone (1)</th>
+            <th scope="col">Telefone (2)</th>
+            <th scope="col">Endereço</th>
+          </tr>
+        </thead>
+
+        <tbody id="corpotabela"><!--Inicio do conteudo da tabela-->
+          
+        </tbody>
+      </table>
 </body>
+<script src="./js/index.js"></script>
 </html>

@@ -2,12 +2,14 @@ const { request, json } = require("express");
 const express = require ('express')
 const mysql = require('mysql')
 const app = express()
+const cors = require('cors')
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'c96b8031',
     database: 'listatelefonica'
 })
+app.use(cors())
 
 const dataAtual = ()=>{
     let dB = new Date()
