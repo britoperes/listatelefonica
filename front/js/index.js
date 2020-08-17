@@ -1,8 +1,1 @@
-// const formulario = document.getElementById('formulario')
-// formulario.addEventListener('submit', e=>{
-//     e.preventDefault()
-// })
-
-const calmaMeuFilho = (evento) =>{
-    evento.preventDefault()
-}
+const base = 'http://localhost:8080'
