@@ -31,7 +31,8 @@
           <label for="endereco">Endereco</label>
           <input class="form-control" id="endereco">
         </div>
-        <button class="btn btn-primary" onclick="postLista()">Inserir</button>
+        <button id = "botaoInserir"class="btn btn-primary" onclick="postLista()">Inserir</button>
+        <button id = "botaoAlterar"class="btn btn-primary"  disabled=true>Alterar</button>
     </div>
 
     <table class="table">
@@ -42,6 +43,7 @@
             <th scope="col">Telefone (1)</th>
             <th scope="col">Telefone (2)</th>
             <th scope="col">Endereço</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
