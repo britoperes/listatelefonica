@@ -1,9 +1,10 @@
 const base = 'http://localhost:8080'
 
 const criaLinhas = (array = [])=>{
-    const base = '<tr> <th>#ID</th> <td>#NOME</td> <td>#TELEFONE1</td> <td>#TELEFONE2</td> <td>#ENDERECO</td></tr>'
+    const botaoDelete = '<button onclick = "deleteLista(#ID)" type="button" class="btn btn-danger">deletar</button>'
+    const base = `<tr> <th>#ID</th> <td>#NOME</td> <td>#TELEFONE1</td> <td>#TELEFONE2</td> <td>#ENDERECO</td> <td>${botaoDelete}</td></tr>`
     const lista = array.reduce((prev, value)=>{
-        return prev + base.replace('#ID', value.ID).replace('#NOME',value.NOME).replace('#TELEFONE1', value.TELEFONE1).replace('#TELEFONE2', value.TELEFONE2).replace('#ENDERECO', value.ENDERECO)
+        return prev + base.replace('#ID', value.ID).replace('#NOME',value.NOME).replace('#TELEFONE1', value.TELEFONE1).replace('#TELEFONE2', value.TELEFONE2).replace('#ENDERECO', value.ENDERECO).replace('#ID', value.ID)
     }, '')
     const corpoTabela = document.getElementById('corpotabela')
     corpoTabela.innerHTML = lista
@@ -20,11 +21,12 @@ const getLista = ()=>{
 }
 
 const postLista = ()=>{
-    const nome = document.getElementById('nome').value
-    const telefone1 = document.getElementById('telefone1').value
-    const telefone2 = document.getElementById('telefone2').value
-    const endereco = document.getElementById('endereco').value
-    const myHeaders = new Headers({"Content-Type":"application/json"})
+    const inputNome = document.getElementById('nome')
+    let nome = inputNome.value
+    let telefone1 = document.getElementById('telefone1').value
+    let telefone2 = document.getElementById('telefone2').value
+    let endereco = document.getElementById('endereco').value
+    let myHeaders = new Headers({"Content-Type":"application/json"})
     const body = {
         nome,
         telefone1,
@@ -36,10 +38,29 @@ const postLista = ()=>{
 
     fetch(`${base}/lista`, {method:'POST', body:JSON.stringify(body), headers:myHeaders}).then(data=>{
         data.text().then(text=>{
-            console.log(text)
             getLista()
+            limpaCampos()
         }).catch(e=>console.error(e))
     })
 }
 
+const deleteLista = (id)=>{
+    console.log(id)
+    fetch(`${base}/lista/${id}`, {method:'DELETE'}).then(data=>{
+        data.text().then(data=> getLista())
+    })
+}
+
+const limpaCampos = ()=>{ //nao funciona
+    let nome = document.getElementById('nome').textContent
+    nome = ''
+    let telefone1 = document.getElementById('telefone1').value
+    telefone1 = ''
+    let telefone2 = document.getElementById('telefone2').value
+    telefone2 = ''
+    let endereco = document.getElementById('endereco').value
+    endereco =''
+    let inputNome = document.getElementById('nome')
+    inputNome.focus()
+}
 getLista()
