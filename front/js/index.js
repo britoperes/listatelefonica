@@ -16,6 +16,29 @@ const getLista = ()=>{
             console.log(resultJSON)
             criaLinhas(resultJSON)
         })
+    }).catch(e=>{console.log(e)})
+}
+
+const postLista = ()=>{
+    const nome = document.getElementById('nome').value
+    const telefone1 = document.getElementById('telefone1').value
+    const telefone2 = document.getElementById('telefone2').value
+    const endereco = document.getElementById('endereco').value
+    const myHeaders = new Headers({"Content-Type":"application/json"})
+    const body = {
+        nome,
+        telefone1,
+        telefone2,
+        endereco
+    }
+    console.log(body)
+    console.log(JSON.stringify(body))
+
+    fetch(`${base}/lista`, {method:'POST', body:JSON.stringify(body), headers:myHeaders}).then(data=>{
+        data.text().then(text=>{
+            console.log(text)
+            getLista()
+        }).catch(e=>console.error(e))
     })
 }
 
