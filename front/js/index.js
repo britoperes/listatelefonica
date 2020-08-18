@@ -89,7 +89,7 @@ const putLista = (id)=>{
     }).catch(e=>console.error(e))
 }
 
-const limpaCampos = ()=>{ //nao funciona
+const limpaCampos = ()=>{
     document.getElementById('nome').value = ''
     document.getElementById('telefone1').value = ''
     document.getElementById('telefone2').value= ''
